@@ -4,46 +4,75 @@ This directory demonstrates the concept of **method overloading** in programming
 
 ## Contents
 
-### 1. `Calculator.java`
-- **Description:** Contains overloaded methods for performing arithmetic operations.
-- **Functions:**
-  - `add(int a, int b)`: Adds two integers.
-  - `add(double a, double b)`: Adds two doubles.
-  - `add(int a, int b, int c)`: Adds three integers.
+### `Main.java`  
+  - **Purpose:** The entry point of the program. Demonstrates **usage** of other classes and handles the main logic flow.
+  - **Attributes:**
+    - Scanner scanner
+    - int data_type
+    - int record_count
+    - ValueGetter value_getter
+    - ValueSorter value_sorter
+  - **Methods:**
+    - public static void main(String[] args)
+    - public static void exitProgram(String message)
 
-### 2. `Printer.java`
-- **Description:** Demonstrates method overloading by printing different types of data.
-- **Functions:**
-  - `print(String message)`: Prints a string message.
-  - `print(int number)`: Prints an integer.
-  - `print(double number)`: Prints a double value.
+### `ValueGetter.java`  
+  - **Purpose:** To get values from the user based on the specified data type (integer or string).
+  - **Attributes:**
+    - private final int TYPE_INT = 1
+    - private final int TYPE_STRING = 2
+    - private int data_type
+    - private int record_count
+    - private Scanner scanner
+  - **Constructor**
+    - public ValueGetter(int data_type, int record_count, Scanner scanner)
+  - **Methods:**
+    - private void askForValues()
+    - private int[] getIntValues()
+    - private String[] getStringValues()
+    - public Object getValues()
+    - public int getDataType()
 
-### 3. `Main.java`
-- **Description:** Contains the main method to test the overloaded methods in `Calculator` and `Printer` classes.
-- **Functions:**
-  - `main(String[] args)`: Entry point; demonstrates usage of overloaded methods.
+### `ValueSorter.java`
+  - **Purpose:** To sort values using overloaded methods for different data types (int, double, String, List<Integer>).
+  - **Attributes:**
+    - private final int TYPE_INT = 1
+    - private final int TYPE_STRING = 2
+    - private int data_type
+    - private String[] string_values
+    - private int[] int_values
+  - **Constructor** _(overloaded)_
+    - public ValueSorter(int data_type)
+    - public ValueSorter(int data_type, String[] string_values)
+    - public ValueSorter(int data_type, int[] int_values)
+  - **Methods:**
+    - public void sort()
+    - public void printValues()
+    - public void setValues(int[] int_values)  _(overloaded)_
+    - public void setValues(String[] string_values)  _(overloaded)_
 
 ## Summary
 
 This directory is a simple example to illustrate how method overloading works in Java. Each class provides overloaded methods to perform similar operations with different parameter lists.
+Each file contains Java classes with examples of method overloading, illustrating how the same method name can be used for different parameter lists.
 
 ## Advanced Implementations
 
-### 4. Overloading with Generic Object Type
+### Overloading with Generic Object Type
 - **Description:** Methods can be overloaded to accept a generic `Object` parameter, allowing them to handle any type, but requiring type checks or casting within the method.
 - **Example:**
   - `print(Object obj)`: Prints any object by calling its `toString()` method.
 
-### 5. Pattern Matching (Java 16+)
+### Pattern Matching (Java 16+)
 - **Description:** Pattern matching with `instanceof` simplifies type checks and casting, making overloaded methods that accept `Object` more concise and safer.
 - **Example:**
   - `if (obj instanceof String s) { ... }`
 
-### 6. Switch Expressions vs. Regular Switch Case
+### Switch Expressions vs. Regular Switch Case
 - **Regular Switch Case:** Traditional `switch` statements require explicit `break` statements and can only be used with certain types.
 - **Switch Expressions (Java 14+):** Allow returning values directly and support pattern matching, making code more concise and expressive.
 
-### 7. Related Terms
+### Related Terms
 - **Varargs:** Overloading methods using variable-length argument lists (e.g., `add(int... numbers)`).
 - **Autoboxing:** Automatic conversion between primitive types and their wrapper classes can affect method resolution.
 - **Covariant Return Types:** Overriding methods can return a subtype, but overloading is based on parameter lists, not return types.
