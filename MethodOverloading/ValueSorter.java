@@ -50,12 +50,13 @@ public class ValueSorter {
     }
   }
 
-  // Setter for values using overloading
+  // Setter for int[] values using overloading
   public void setValues(int[] int_values) {
     this.int_values = int_values;
     this.string_values = null; // Clear string values
   }
 
+  // Setter for String[] values using overloading
   public void setValues(String[] string_values) {
     this.string_values = string_values;
     this.int_values = null; // Clear int values
