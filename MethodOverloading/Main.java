@@ -10,7 +10,10 @@ public class Main {
   }
 
   public static void main(String[] args) {
+    // Print program title
     System.out.println("Laboratory #2 - Method Overloading");
+
+    // Use try-with-resources to ensure scanner is closed
     try (Scanner scanner = new Scanner(System.in)) {
       // Let user input number of records
       System.out.print("Enter number of records: ");
@@ -60,6 +63,8 @@ public class Main {
       value_sorter.sort();
       value_sorter.printValues();
 
+      // scanner will be closed automatically here, implemented using:
+      // try-with-resources
     } catch (Exception e) {
       // prepare message if not null, use message of class if null
       String message = e.getMessage() != null ? e.getMessage() : e.getClass().getName();
