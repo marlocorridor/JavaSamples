@@ -1,5 +1,8 @@
 package Inheritance;
 
+// Abstract base class for different types of bank accounts.
+// It includes common properties and methods shared by all account types.
+// Abstract class cannot be instantiated directly.
 public abstract class BankAccount {
     private final String accountNumber;
     private final String accountHolder;
@@ -13,6 +16,11 @@ public abstract class BankAccount {
     private static final String TRANSACTION_TYPE_DEPOSIT = "DEPOSIT";
     private static final String TRANSACTION_TYPE_WITHDRAW = "WITHDRAW";
     private static final String TRANSACTION_TYPE_CHECK_BALANCE = "CHECK_BALANCE";
+
+    // Constants for account types, owned by BankAccount class
+    public static final String ACCOUNT_TYPE_SAVINGS = "SAVINGS";
+    public static final String ACCOUNT_TYPE_CHECKING = "CHECKING";
+    public static final String ACCOUNT_TYPE_CURRENT = "CURRENT";
 
     // Constructor
     public BankAccount(String accountNumber, String accountHolder, String accountType, double initialDeposit) {
