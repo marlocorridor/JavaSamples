@@ -9,10 +9,10 @@ public abstract class BankAccount {
     private static int createdAccountsCounter = 0;
     private static int closedAccountsCounter = 0;
 
-    // Constants for transaction types
-    private final String TRANSACTION_TYPE_DEPOSIT = "DEPOSIT";
-    private final String TRANSACTION_TYPE_WITHDRAW = "WITHDRAW";
-    private final String TRANSACTION_TYPE_CHECK_BALANCE = "CHECK_BALANCE";
+    // Constants for transaction types, owned by BankAccount class
+    private static final String TRANSACTION_TYPE_DEPOSIT = "DEPOSIT";
+    private static final String TRANSACTION_TYPE_WITHDRAW = "WITHDRAW";
+    private static final String TRANSACTION_TYPE_CHECK_BALANCE = "CHECK_BALANCE";
 
     // Constructor
     public BankAccount(String accountNumber, String accountHolder, String accountType, double initialDeposit) {
