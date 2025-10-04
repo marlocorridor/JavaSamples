@@ -6,6 +6,8 @@ public abstract class BankAccount {
     private final String accountType;
     private double balance;
     private boolean isClosed = false;
+    private static int createdAccountsCounter = 0;
+    private static int closedAccountsCounter = 0;
 
     // Constants for transaction types
     private final String TRANSACTION_TYPE_DEPOSIT = "DEPOSIT";
@@ -20,7 +22,9 @@ public abstract class BankAccount {
         this.accountType = accountType;
         this.balance = initialDeposit;
 
-        // Account creation success message
+        // Account creation tracking
+        createdAccountsCounter++;
+        // success message
         String message = String.format(
                 "Account created successfully for %s with initial deposit of %.2f%n",
                 accountHolder,
@@ -57,6 +61,7 @@ public abstract class BankAccount {
             return;
         }
         // Close the account
+        closedAccountsCounter++;
         this.isClosed = true;
         System.out.println("Account closed successfully.");
     }
