@@ -57,9 +57,10 @@ public abstract class BankAccount {
         showBalance(TRANSACTION_TYPE_CHECK_BALANCE);
     }
 
-    public abstract void deposit(double amount); // Should be implemented in subclasses
+    // Abstract methods declarations, to be implemented in subclasses
+    public abstract void deposit(double amount);
 
-    public abstract void withdraw(double amount); // Should be implemented in subclasses
+    public abstract void withdraw(double amount);
 
     // Account management methods
     public void closeAccount() {
