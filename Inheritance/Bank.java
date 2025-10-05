@@ -17,4 +17,19 @@ public class Bank {
 
         BankAccount.showAccountsStatistics();
     }
+
+    public void showMenu() {
+        String menu = """
+                ┌─────────────────────────────────┐
+                │        BANKING MENU             │
+                ├─────────────────────────────────┤
+                │ 1. Check Balance                │
+                │ 2. Deposit Money                │
+                │ 3. Withdraw Money               │
+                │ 4. Close Account                │
+                │ 5. Exit                         │
+                └─────────────────────────────────┘
+                """;
+        System.out.print(menu);
+    }
 }
