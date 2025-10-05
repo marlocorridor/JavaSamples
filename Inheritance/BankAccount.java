@@ -24,10 +24,10 @@ public abstract class BankAccount implements TransactionTypeProvider, AccountTyp
         createdAccountsCounter++;
         // success message
         String message = String.format(
-                "Account created successfully for %s with initial deposit of %.2f%n",
+                "SYSTEM: Account created successfully for %s with initial deposit of %,.2f%n",
                 accountHolder,
                 initialDeposit);
-        System.out.println(message);
+        System.out.print(message);
     }
 
     private void showBalance(String transactionType) {
