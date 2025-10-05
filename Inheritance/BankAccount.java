@@ -9,6 +9,8 @@ public abstract class BankAccount implements TransactionTypeProvider, AccountTyp
     private final String accountType;
     private double balance;
     private boolean isClosed = false;
+
+    // These are static vars that the class owns
     private static int createdAccountsCounter = 0;
     private static int closedAccountsCounter = 0;
 
@@ -67,6 +69,25 @@ public abstract class BankAccount implements TransactionTypeProvider, AccountTyp
 
     public String checkAccountType() {
         return this.accountType;
+    }
+
+    // A statuc method to showcase static vars
+    public static void showAccountsStatistics() {
+        String messageTemplate = """
+                =================================
+                BANK ACCOUNT STATISTICS
+                =================================
+                + Created accounts: \t%d
+                - Closed accounts: \t%d
+                Total Active accounts: \t%d
+                =================================
+                """;
+        String message = String.format(
+                messageTemplate,
+                BankAccount.createdAccountsCounter,
+                BankAccount.closedAccountsCounter,
+                BankAccount.createdAccountsCounter - BankAccount.closedAccountsCounter);
+        System.err.println(message);
     }
 
     // Getter methods
