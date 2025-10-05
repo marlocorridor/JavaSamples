@@ -7,7 +7,7 @@ public abstract class BankAccount implements TransactionTypeProvider, AccountTyp
     private final String accountNumber;
     private final String accountHolder;
     private final String accountType;
-    private double balance;
+    protected double balance;
     private boolean isClosed = false;
 
     // These are static vars that the class owns
@@ -25,23 +25,23 @@ public abstract class BankAccount implements TransactionTypeProvider, AccountTyp
         // Account creation tracking
         createdAccountsCounter++;
         // success message
-        String message = String.format(
-                "SYSTEM: Account created successfully for %s with initial deposit of %,.2f%n",
-                accountHolder,
-                initialDeposit);
+        String message = String.format("""
+                SYSTEM: Account created successfully for %s with initial deposit of %,.2f%n
+                """,
+                this.accountHolder,
+                this.balance);
         System.out.print(message);
     }
 
     private void showBalance(String transactionType) {
         // using Rule switch expressions
         String messagePrefix = switch (transactionType) {
-            case TRANSACTION_TYPE_DEPOSIT -> "New Balance: %.2f%n";
-            case TRANSACTION_TYPE_WITHDRAW -> "Remaining Balance: %.2f%n";
-            case TRANSACTION_TYPE_CHECK_BALANCE -> "Current Balance: %.2f%n";
+            case TRANSACTION_TYPE_DEPOSIT -> "New Balance: %,.2f%n";
+            case TRANSACTION_TYPE_WITHDRAW -> "Remaining Balance: %,.2f%n";
+            case TRANSACTION_TYPE_CHECK_BALANCE -> "Current Balance: %,.2f%n";
             default -> throw new AssertionError();
         };
         System.out.printf(messagePrefix, this.balance);
-        System.out.println();
     }
 
     // Transaction methods
@@ -101,5 +101,9 @@ public abstract class BankAccount implements TransactionTypeProvider, AccountTyp
 
     public String getAccountType() {
         return this.accountType;
+    }
+
+    public double getBalance() {
+        return this.balance;
     }
 }

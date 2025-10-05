@@ -12,14 +12,32 @@ public class CheckingBankAccount extends BankAccount implements AccountLimitProv
     // Override from BankAccount parent class
     @Override
     public void deposit(double amount) {
+        if (!this.isDepositWithinLimit(amount)) {
+            this.announceLimitReached(TRANSACTION_TYPE_DEPOSIT);
+            return;
+        }
         // Implement deposit logic specific to CheckingAccount
         System.out.println("Depositing " + amount + " to Checking Account");
+        System.out.println();
     }
 
     @Override
     public void withdraw(double amount) {
-        // Implement withdraw logic specific to CheckingAccount
-        System.out.println("Withdrawing " + amount + " from Checking Account");
+        if (!this.isWithdrawalWithinLimit(amount)) {
+            this.announceLimitReached(TRANSACTION_TYPE_WITHDRAW);
+            return;
+        }
+        //
+        if (amount > balance) {
+            this.announceInsufficientBalance();
+            return;
+        }
+        //
+        this.balance = balance - amount;
+
+        // Formats message
+        System.out.printf("Withdrew: %,.2f (Checking Account)", amount);
+        System.out.println();
     }
 
     // Override from AccountLimitProvider interface
